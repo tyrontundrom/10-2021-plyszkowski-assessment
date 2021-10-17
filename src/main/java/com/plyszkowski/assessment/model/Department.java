@@ -3,6 +3,7 @@ package com.plyszkowski.assessment.model;
 import com.plyszkowski.assessment.common.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -26,5 +27,12 @@ public class Department extends BaseEntity {
     public Department(String name, Address localization) {
         this.name = name;
         this.localization = localization;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

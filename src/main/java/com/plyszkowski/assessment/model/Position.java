@@ -23,4 +23,11 @@ public class Position extends BaseEntity {
     public Position(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

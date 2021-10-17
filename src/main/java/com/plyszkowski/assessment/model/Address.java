@@ -44,4 +44,14 @@ public class Address extends BaseEntity {
         this.department = department;
         this.employee = employee;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", houseNumber='" + houseNumber + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

@@ -19,8 +19,11 @@
         <input type="text" class="form-control" th:field="*{lastName}" placeholder="">
     </div>
     <div class="col-md-6">
-        <label  class="form-label">Adres</label>
-        <input type="text" class="form-control" th:field="*{address}" placeholder="">
+        <label class="form-label">Adres</label>
+        <select th:field="*{address}" type="text" class="form-select">
+            <option selected value="">Wybierz...</option>
+            <option th:each="_address : ${addressEmployee.findAll()}" th:value="${_address.id}" th:text="${_address.toString()}">
+        </select>
     </div>
     <div class="col-md-6">
         <label  class="form-label">E-mail</label>
@@ -37,6 +40,21 @@
     <div class="col-md-6">
         <label  class="form-label">Wynagrodzenie</label>
         <input type="text" class="form-control" th:field="*{salary}" placeholder="">
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Dział</label>
+        <select th:field="*{department}" type="text" class="form-select">
+            <option selected value="">Wybierz...</option>
+            <option th:each="_departm : ${departmentEmployee.findAll()}" th:value="${_departm.id}" th:text="${_departm.toString()}">
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Stanowisko</label>
+        <select th:field="*{position}" type="text" class="form-select">
+            <option selected value="">Wybierz...</option>
+            <option th:each="_position : ${positionEmployee.findAll()}" th:value="${_position.id}" th:text="${_position.toString()}">
+        </select>
     </div>
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Zapisz</button>
