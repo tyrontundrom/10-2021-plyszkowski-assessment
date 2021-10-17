@@ -60,4 +60,19 @@ public class Employee extends BaseEntity {
         this.department = department;
         this.position = position;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address=" + address +
+                ", email='" + email + '\'' +
+                ", phone=" + phone +
+                ", employmentDate=" + employmentDate +
+                ", salary=" + salary +
+                ", department=" + department +
+                ", position=" + position +
+                '}';
+    }
 }
