@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link href="/webjars/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+  <title>Positions List</title>
+</head>
+<body>
+<h1 class="text-xl-center text-success">Assessment</h1>
+<h2 class="text-center text-primary">Stanowiska</h2>
+<nav class="navbar navbar-light bg-light">
+  <form class="container-fluid justify-content-start">
+    <button class="btn btn-outline-success me-2" type="button" >
+      <a class="btn" th:href="@{'/'}">Strona główna</a>
+    </button>
+    <button class="btn btn-sm btn-outline-secondary" type="button" >
+      <a class="btn" th:href="@{'/positions/add'}">Dodaj stanowisko</a>
+    </button>
+  </form>
+</nav>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Nazwa</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="position:${positionsList}">
+    <td th:text="${position.id}"></td>
+    <td th:text="${position.name}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
