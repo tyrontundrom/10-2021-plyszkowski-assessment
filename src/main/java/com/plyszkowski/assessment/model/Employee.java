@@ -3,9 +3,10 @@ package com.plyszkowski.assessment.model;
 import com.plyszkowski.assessment.common.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 @Entity
@@ -31,7 +32,8 @@ public class Employee extends BaseEntity {
     private Integer phone;
 
     @Column
-    private LocalDateTime employmentDate;
+    @DateTimeFormat(style = "S")
+    private LocalDate employmentDate;
 
     @Column
     private Double salary;
@@ -49,7 +51,7 @@ public class Employee extends BaseEntity {
     }
 
     public Employee(String firstName, String lastName, Address address, String email, Integer phone,
-                    LocalDateTime employmentDate, Double salary, Department department, Position position) {
+                    LocalDate employmentDate, Double salary, Department department, Position position) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;

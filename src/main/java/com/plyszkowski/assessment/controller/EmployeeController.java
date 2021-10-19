@@ -5,9 +5,12 @@ import com.plyszkowski.assessment.service.AddressService;
 import com.plyszkowski.assessment.service.DepartmentService;
 import com.plyszkowski.assessment.service.EmployeeService;
 import com.plyszkowski.assessment.service.PositionService;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.Index;
 
 @Controller
 @RequestMapping("/employees")
@@ -46,8 +49,15 @@ public class EmployeeController {
         return "employees-list";
     }
 
-    @DeleteMapping
-    public void delete(Employee employee) {
+    @GetMapping("/{id}")
+    public String showOneEmployee(Model model, Employee employee) {
+        model.addAttribute("oneEmployee", employeeService.findById(employee.getId()));
+        return "employee-id";
+    }
+
+    @DeleteMapping(value = "remove/{id}")
+    public String delete(Employee employee) {
         employeeService.delete(employee);
+        return "employees-list";
     }
 }

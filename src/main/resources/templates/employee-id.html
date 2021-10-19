@@ -12,10 +12,10 @@
 <nav class="navbar navbar-light bg-light">
     <form class="container-fluid justify-content-start">
         <button class="btn btn-outline-success me-2" type="button" >
-            <a class="btn" th:href="@{'/'}">Strona główna</a>
+            <a class="btn" th:href="@{'/employees/'}">Strona główna</a>
         </button>
         <button class="btn btn-sm btn-outline-secondary" type="button" >
-            <a class="btn" th:href="@{'/employees/add'}">Dodaj pracownika</a>
+            <a class="btn" th:href="@{'/employees/remove/'}" >Usuń pracownika</a>
         </button>
     </form>
 </nav>
@@ -35,20 +35,21 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="employee:${employeesList}">
-        <td><a th:href="@{'/employees/' + ${employee.getId()}}" th:text="${employee.id}"></a></td>
-        <td th:text="${employee.firstName}"></td>
-        <td th:text="${employee.lastName}"></td>
-        <td th:text="${employee.address}"></td>
-        <td th:text="${employee.email}"></td>
-        <td th:text="${employee.phone}"></td>
-        <td th:text="${employee.employmentDate}"></td>
-        <td th:text="${employee.salary}"></td>
-        <td th:text="${employee.department}"></td>
-        <td th:text="${employee.position}"></td>
+    <tr th:each="employee:${oneEmployee}">
+        <td th:text="${oneEmployee.id}"></td>
+        <td th:text="${oneEmployee.firstName}"></td>
+        <td th:text="${oneEmployee.lastName}"></td>
+        <td th:text="${oneEmployee.address}"></td>
+        <td th:text="${oneEmployee.email}"></td>
+        <td th:text="${oneEmployee.phone}"></td>
+        <td th:text="${oneEmployee.employmentDate}"></td>
+        <td th:text="${oneEmployee.salary}"></td>
+        <td th:text="${oneEmployee.department}"></td>
+        <td th:text="${oneEmployee.position}"></td>
 
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>
