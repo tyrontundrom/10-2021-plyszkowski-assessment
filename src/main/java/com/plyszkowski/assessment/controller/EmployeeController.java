@@ -7,6 +7,7 @@ import com.plyszkowski.assessment.service.EmployeeService;
 import com.plyszkowski.assessment.service.PositionService;
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +41,7 @@ public class EmployeeController {
     @PostMapping
     public String create(@ModelAttribute Employee employee) {
         employeeService.create(employee);
-        return "employees-list";
+        return "redirect:/employees/list";
     }
 
     @GetMapping("/list")
@@ -55,9 +56,9 @@ public class EmployeeController {
         return "employee-id";
     }
 
-    @DeleteMapping(value = "remove/{id}")
-    public String delete(Employee employee) {
-        employeeService.delete(employee);
-        return "employees-list";
+    @GetMapping("remove/{id}")
+    public String delete(@PathVariable(name = "id") Long id) {
+        employeeService.delete(id);
+        return "redirect:/employees/list";
     }
 }

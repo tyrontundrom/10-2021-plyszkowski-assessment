@@ -32,7 +32,7 @@ public class Employee extends BaseEntity {
     private Integer phone;
 
     @Column
-    @DateTimeFormat(style = "S")
+    @DateTimeFormat(pattern = "YYYY.mm.dd")
     private LocalDate employmentDate;
 
     @Column

@@ -32,6 +32,7 @@
         <th>Wynagrodzenie</th>
         <th>Dział</th>
         <th>Stanowisko</th>
+        <th>Operacja</th>
     </tr>
     </thead>
     <tbody>
@@ -46,6 +47,7 @@
         <td th:text="${employee.salary}"></td>
         <td th:text="${employee.department}"></td>
         <td th:text="${employee.position}"></td>
+        <td><a th:href="@{/employees/remove/{id}(id=${employee.id})}">Usuń</a></td>
 
     </tr>
     </tbody>

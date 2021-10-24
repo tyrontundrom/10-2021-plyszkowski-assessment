@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <link href="/webjars/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="/webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
-    <title>Employee List</title>
+    <title>Employee Id</title>
 </head>
 <body>
 <h1 class="text-xl-center text-success">Assessment</h1>
 <h2 class="text-center text-primary">Pracownicy</h2>
 <nav class="navbar navbar-light bg-light">
-    <form class="container-fluid justify-content-start">
+    <form class="container-fluid justify-content-start" >
         <button class="btn btn-outline-success me-2" type="button" >
-            <a class="btn" th:href="@{'/employees/'}">Strona główna</a>
+            <a class="btn" th:href="@{'/'}">Strona główna</a>
         </button>
-        <button class="btn btn-sm btn-outline-secondary" type="button" >
-            <a class="btn" th:href="@{'/employees/remove/'}" >Usuń pracownika</a>
-        </button>
+
     </form>
 </nav>
 <table class="table table-bordered">
