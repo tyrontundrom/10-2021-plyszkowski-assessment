@@ -47,7 +47,10 @@
         <td th:text="${employee.salary}"></td>
         <td th:text="${employee.department}"></td>
         <td th:text="${employee.position}"></td>
-        <td><a th:href="@{/employees/remove/{id}(id=${employee.id})}">Usuń</a></td>
+        <td>
+            <a class="btn btn-sm btn-outline-danger" th:href="@{/employees/remove/{id}(id=${employee.id})}">Usuń</a>
+            <a class="btn btn-sm btn-outline-primary" th:href="@{'/employees/edit/' + ${employee.getId()}}">Edytuj</a>
+        </td>
 
     </tr>
     </tbody>

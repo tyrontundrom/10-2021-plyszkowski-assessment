@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Index;
@@ -59,6 +60,22 @@ public class EmployeeController {
     @GetMapping("remove/{id}")
     public String delete(@PathVariable(name = "id") Long id) {
         employeeService.delete(id);
+        return "redirect:/employees/list";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editEmployee(@PathVariable(name = "id") Employee employee,  Model model) {
+        model.addAttribute("editEmployee", employee);
+        model.addAttribute("addressEmployee", addressService);
+        model.addAttribute("departmentEmployee", departmentService);
+        model.addAttribute("positionEmployee", positionService);
+
+        return "edit-employee";
+    }
+
+    @PutMapping
+    public String editEmployee(@ModelAttribute Employee employee) {
+        employeeService.editEmployee(employee);
         return "redirect:/employees/list";
     }
 }

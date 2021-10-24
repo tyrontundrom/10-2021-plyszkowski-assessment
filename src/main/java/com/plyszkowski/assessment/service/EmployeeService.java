@@ -4,6 +4,7 @@ import com.plyszkowski.assessment.model.Employee;
 import com.plyszkowski.assessment.repository.EmployeesRepository;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +38,18 @@ public class EmployeeService {
         employeesRepository.deleteById(id);
     }
 
+    @Transactional
+    public Employee editEmployee(Employee employee) {
+        Employee editedEmployee = employeesRepository.findById(employee.getId()).orElseThrow();
+        editedEmployee.setFirstName(employee.getFirstName());
+        editedEmployee.setLastName(employee.getLastName());
+        editedEmployee.setAddress(employee.getAddress());
+        editedEmployee.setEmail(employee.getEmail());
+        editedEmployee.setPhone(employee.getPhone());
+        editedEmployee.setPosition(employee.getPosition());
+        editedEmployee.setSalary(employee.getSalary());
+        return editedEmployee;
+    }
 
 
 
