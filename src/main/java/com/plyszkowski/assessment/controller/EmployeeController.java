@@ -11,8 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 
 import javax.persistence.Index;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/employees")
@@ -77,5 +83,25 @@ public class EmployeeController {
     public String editEmployee(@ModelAttribute Employee employee) {
         employeeService.editEmployee(employee);
         return "redirect:/employees/list";
+    }
+
+    @GetMapping("/export-csv")
+    public void exportToCSV(HttpServletResponse response) throws IOException {
+        response.setContentType("text/csv");
+        String fileName = "employees.csv";
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=" + fileName;
+        response.setHeader(headerKey, headerValue);
+        List<Employee> employeeList = employeeService.findAll();
+        ICsvBeanWriter csvBeanWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
+        String[] csvHeader = {"ID", "Imię", "Nazwisko", "Adres", "Email", "Telefon", "Data zatrudnienia",
+                "Wynagrodzenie", "Dział", "Stanowisko"};
+        String[] nameMapping = {"id", "firstName", "lastName", "address", "email", "phone", "employmentDate",
+                "salary", "department", "position"};
+        csvBeanWriter.writeHeader(csvHeader);
+        for (Employee emp : employeeList) {
+            csvBeanWriter.write(emp, nameMapping);
+        }
+        csvBeanWriter.close();
     }
 }
