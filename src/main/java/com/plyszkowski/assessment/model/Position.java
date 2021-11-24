@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Setter
 public class Position extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String name;
 
     public Position() {

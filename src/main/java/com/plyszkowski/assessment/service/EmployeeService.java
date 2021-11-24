@@ -14,6 +14,7 @@ public class EmployeeService {
 
     private final EmployeesRepository employeesRepository;
 
+
     public EmployeeService(EmployeesRepository employeesRepository) {
         this.employeesRepository = employeesRepository;
     }
@@ -38,9 +39,9 @@ public class EmployeeService {
         employeesRepository.deleteById(id);
     }
 
-    @Transactional
+
     public Employee editEmployee(Employee employee) {
-        Employee editedEmployee = employeesRepository.findById(employee.getId()).orElseThrow();
+        Employee editedEmployee = employeesRepository.getById(employee.getId());
         editedEmployee.setFirstName(employee.getFirstName());
         editedEmployee.setLastName(employee.getLastName());
         editedEmployee.setAddress(employee.getAddress());
@@ -48,7 +49,8 @@ public class EmployeeService {
         editedEmployee.setPhone(employee.getPhone());
         editedEmployee.setPosition(employee.getPosition());
         editedEmployee.setSalary(employee.getSalary());
-        return editedEmployee;
+        Employee save = employeesRepository.save(editedEmployee);
+        return save;
     }
 
 

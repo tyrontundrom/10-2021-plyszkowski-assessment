@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 public class Department extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String name;
 
 

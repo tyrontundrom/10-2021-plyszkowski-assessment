@@ -9,7 +9,7 @@
 <body>
 <h1 class="text-xl-center text-success">Assessment</h1>
 <h2 class="text-center text-primary">Pracownicy</h2>
-<form class="row g-3" th:action="@{/employees/edit/{id}(id=${editEmployee.id})}" method="get" th:object="${editEmployee}">
+<form class="row g-3" th:action="@{/employees/edit/{id}(id=${editEmployee.id})}" method="post" th:object="${editEmployee}">
     <div class="col-md-6">
         <label  class="form-label" >Imię</label>
         <input type="text" class="form-control" th:field="*{firstName}">

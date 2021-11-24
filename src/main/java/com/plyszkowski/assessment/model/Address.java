@@ -15,16 +15,16 @@ import javax.persistence.Table;
 @Setter
 public class Address extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String street;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
     private String houseNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 6)
     private String postalCode;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String city;
 
     @OneToOne(mappedBy = "localization")

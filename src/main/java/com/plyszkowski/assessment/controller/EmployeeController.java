@@ -75,11 +75,11 @@ public class EmployeeController {
         model.addAttribute("addressEmployee", addressService);
         model.addAttribute("departmentEmployee", departmentService);
         model.addAttribute("positionEmployee", positionService);
-
+//        employeeService.editEmployee(employee);
         return "edit-employee";
     }
 
-    @PutMapping
+    @PostMapping("/edit/{id}")
     public String editEmployee(@ModelAttribute Employee employee) {
         employeeService.editEmployee(employee);
         return "redirect:/employees/list";

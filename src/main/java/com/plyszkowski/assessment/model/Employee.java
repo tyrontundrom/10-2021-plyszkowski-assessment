@@ -15,17 +15,17 @@ import java.time.LocalDate;
 @Setter
 public class Employee extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String firstName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String lastName;
 
     @OneToOne
     @JoinColumn(name = "address_id", foreignKey = @ForeignKey(name = "employees_addresses_id_fk"))
     private Address address;
 
-    @Column
+    @Column(length = 80)
     private String email;
 
     @Column
