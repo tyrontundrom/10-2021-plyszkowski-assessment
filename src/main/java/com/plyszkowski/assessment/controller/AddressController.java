@@ -29,7 +29,7 @@ public class AddressController {
     @PostMapping
     public String create(@ModelAttribute Address address) {
         addressService.create(address);
-        return "addresses-list";
+        return "redirect:/addresses/list";
     }
 
     @GetMapping("/list")

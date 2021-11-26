@@ -35,7 +35,7 @@ public class DepartmentController {
     @PostMapping
     public String create(@ModelAttribute Department department) {
         departmentService.create(department);
-        return "departments-list";
+        return "redirect:/departments/list";
     }
 
     @GetMapping("/list")

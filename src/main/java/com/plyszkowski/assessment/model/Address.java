@@ -4,10 +4,7 @@ import com.plyszkowski.assessment.common.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "addresses")
@@ -27,8 +24,8 @@ public class Address extends BaseEntity {
     @Column(nullable = false, length = 30)
     private String city;
 
-    @OneToOne(mappedBy = "localization")
-    private Department department;
+//    @OneToMany(mappedBy = "localization")
+//    private Department department;
 
     @OneToOne(mappedBy = "address")
     private Employee employee;
@@ -36,12 +33,12 @@ public class Address extends BaseEntity {
     public Address() {
     }
 
-    public Address(String street, String houseNumber, String postalCode, String city, Department department, Employee employee) {
+    public Address(String street, String houseNumber, String postalCode, String city, Employee employee) {
         this.street = street;
         this.houseNumber = houseNumber;
         this.postalCode = postalCode;
         this.city = city;
-        this.department = department;
+
         this.employee = employee;
     }
 

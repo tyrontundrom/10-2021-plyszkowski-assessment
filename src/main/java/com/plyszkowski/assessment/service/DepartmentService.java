@@ -1,10 +1,13 @@
 package com.plyszkowski.assessment.service;
 
+import com.plyszkowski.assessment.common.BaseEntity;
 import com.plyszkowski.assessment.model.Department;
 import com.plyszkowski.assessment.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Service
 public class DepartmentService {

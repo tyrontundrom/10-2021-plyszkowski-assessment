@@ -63,7 +63,7 @@ public class EmployeeController {
         return "employee-id";
     }
 
-    @GetMapping("remove/{id}")
+    @GetMapping("/remove/{id}")
     public String delete(@PathVariable(name = "id") Long id) {
         employeeService.delete(id);
         return "redirect:/employees/list";
@@ -75,7 +75,6 @@ public class EmployeeController {
         model.addAttribute("addressEmployee", addressService);
         model.addAttribute("departmentEmployee", departmentService);
         model.addAttribute("positionEmployee", positionService);
-//        employeeService.editEmployee(employee);
         return "edit-employee";
     }
 

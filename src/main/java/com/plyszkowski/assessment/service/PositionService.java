@@ -23,4 +23,7 @@ public class PositionService {
         return positionRepository.findAll();
     }
 
+    public void delete(Long id) {
+        positionRepository.deleteById(id);
+    }
 }

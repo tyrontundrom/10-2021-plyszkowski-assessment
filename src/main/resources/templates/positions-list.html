@@ -24,12 +24,17 @@
   <tr>
     <th>Id</th>
     <th>Nazwa</th>
+    <th>Akcja</th>
   </tr>
   </thead>
   <tbody>
   <tr th:each="position:${positionsList}">
     <td th:text="${position.id}"></td>
     <td th:text="${position.name}"></td>
+    <td>
+      <a class="btn btn-sm btn-outline-danger" th:href="@{/positions/remove/{id}(id=${position.id})}">Usuń</a>
+      <a class="btn btn-sm btn-outline-primary" th:href="@{'/positions/edit/' + ${position.getId()}}">Edytuj</a>
+    </td>
   </tr>
   </tbody>
 </table>

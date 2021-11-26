@@ -17,7 +17,7 @@ public class Department extends BaseEntity {
     private String name;
 
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "localization_id", foreignKey = @ForeignKey(name = "department_address_id_fk"))
     private Address localization;
 
