@@ -31,7 +31,15 @@ public class DepartmentService {
         return departmentRepository.getById(id);
     }
 
-    public void delete(Department department) {
-        departmentRepository.delete(department);
+    public void delete(Long id) {
+        departmentRepository.deleteById(id);
+    }
+
+    public Department editDepartment(Department department) {
+        Department editDepartment = departmentRepository.getById(department.getId());
+        editDepartment.setName(department.getName());
+        editDepartment.setLocalization(department.getLocalization());
+        Department save = departmentRepository.save(editDepartment);
+        return save;
     }
 }

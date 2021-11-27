@@ -7,10 +7,7 @@ import com.plyszkowski.assessment.service.AddressService;
 import com.plyszkowski.assessment.service.DepartmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/departments")
@@ -42,5 +39,24 @@ public class DepartmentController {
     public String showDepartments(Model model) {
         model.addAttribute("departmentsList", departmentService.findAll());
         return "departments-list";
+    }
+
+    @GetMapping("/remove/{id}")
+    public String delete(@PathVariable Long id) {
+        departmentService.delete(id);
+        return "redirect:/departments/list";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editDepartment(@PathVariable(name = "id") Department department, Model model) {
+        model.addAttribute("editDepartment", department);
+        model.addAttribute("addressDepartment", addressService);
+        return "edit-department";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editDepartment(@ModelAttribute Department department) {
+        departmentService.editDepartment(department);
+        return "redirect:/departments/list";
     }
 }

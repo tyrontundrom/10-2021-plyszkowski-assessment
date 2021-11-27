@@ -1,6 +1,6 @@
 package com.plyszkowski.assessment.controller;
 
-import com.plyszkowski.assessment.model.Address;
+
 import com.plyszkowski.assessment.model.Position;
 import com.plyszkowski.assessment.service.PositionService;
 import org.springframework.stereotype.Controller;

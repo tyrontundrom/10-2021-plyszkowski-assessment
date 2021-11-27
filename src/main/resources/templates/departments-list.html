@@ -25,6 +25,7 @@
         <th>Id</th>
         <th>Nazwa</th>
         <th>Adres</th>
+        <th>Akcja</th>
     </tr>
     </thead>
     <tbody>
@@ -32,6 +33,10 @@
         <td th:text="${department.id}"></td>
         <td th:text="${department.name}"></td>
         <td th:text="${department.localization}"></td>
+        <td>
+            <a class="btn btn-sm btn-outline-danger" th:href="@{/departments/remove/{id}(id=${department.id})}">Usuń</a>
+            <a class="btn btn-sm btn-outline-primary" th:href="@{'/departments/edit/' + ${department.getId()}}">Edytuj</a>
+        </td>
     </tr>
     </tbody>
 </table>
