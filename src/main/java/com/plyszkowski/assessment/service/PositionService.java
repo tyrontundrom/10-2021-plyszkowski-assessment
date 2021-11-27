@@ -26,4 +26,11 @@ public class PositionService {
     public void delete(Long id) {
         positionRepository.deleteById(id);
     }
+
+    public Position editPosition(Position position) {
+        Position editPosition = positionRepository.getById(position.getId());
+        editPosition.setName(position.getName());
+        Position save = positionRepository.save(editPosition);
+        return save;
+    }
 }

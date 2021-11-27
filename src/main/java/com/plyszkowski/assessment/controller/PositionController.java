@@ -40,4 +40,15 @@ public class PositionController {
         positionService.delete(id);
         return "redirect:/positions/list";
     }
+    @GetMapping("/edit/{id}")
+    public String editEmployee(@PathVariable(name = "id") Position position, Model model) {
+        model.addAttribute("editPosition", position);
+        return "edit-position";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editPosition(@ModelAttribute Position position) {
+        positionService.editPosition(position);
+        return "redirect:/positions/list";
+    }
 }
