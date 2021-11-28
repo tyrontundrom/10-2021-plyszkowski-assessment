@@ -27,9 +27,17 @@ public class AddressService {
         return addressRepository.getById(id);
     }
 
-    public void delete(Address address) {
-        addressRepository.delete(address);
+    public void delete(Long id) {
+        addressRepository.deleteById(id);
     }
 
 
+    public Address editAddress(Address address) {
+        Address editAddress = addressRepository.getById(address.getId());
+        editAddress.setStreet(address.getStreet());
+        editAddress.setHouseNumber(address.getHouseNumber());
+        editAddress.setPostalCode(address.getPostalCode());
+        editAddress.setCity(address.getCity());
+        return addressRepository.save(editAddress);
+    }
 }

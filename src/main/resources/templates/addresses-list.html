@@ -27,6 +27,7 @@
     <th>Numer Domu</th>
     <th>Kod Pocztowy</th>
     <th>Miasto</th>
+    <th>Akcje</th>
   </tr>
   </thead>
   <tbody>
@@ -36,6 +37,10 @@
     <td th:text="${address.houseNumber}"></td>
     <td th:text="${address.postalCode}"></td>
     <td th:text="${address.city}"></td>
+    <td>
+      <a class="btn btn-sm btn-outline-danger" th:href="@{/addresses/remove/{id}(id=${address.id})}">Usuń</a>
+      <a class="btn btn-sm btn-outline-primary" th:href="@{'/addresses/edit/' + ${address.getId()}}">Edytuj</a>
+    </td>
   </tr>
   </tbody>
 </table>
