@@ -3,6 +3,7 @@ package com.plyszkowski.assessment.model;
 import com.plyszkowski.assessment.common.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -31,8 +32,8 @@ public class Employee extends BaseEntity {
     @Column
     private Integer phone;
 
-    @Column
-    @DateTimeFormat(pattern = "YYYY.mm.dd")
+    @Column(columnDefinition = "DATE")
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
     private LocalDate employmentDate;
 
     @Column
